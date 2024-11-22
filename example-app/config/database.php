@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,8 +29,18 @@ return [
     |
     */
 
-    'connections' => [
+'connections' => [
 
+    'mongodb' => [
+        'driver' => 'mongodb',
+        'host' => env('DB_HOST', '127.0.0.1'),
+        'port' => env('DB_PORT', 27017),
+        'database' => env('DB_DATABASE', 'UAS_FRONTEND'),
+        'options' => [
+            // Here you can add MongoDB-specific options if needed
+            'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // Default to 'admin'
+        ],
+    ],
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),

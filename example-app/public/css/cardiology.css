@@ -1,0 +1,211 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styling */
+.navbar {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fixed position */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar img.logo {
+    width: 80px;
+    transition: transform 0.3s;
+}
+
+.navbar img.logo:hover {
+    transform: scale(1.1);
+}
+
+.background-image {
+    background: url('/img/background-cardiology.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.background-content h1 {
+    color: #1a92be;
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.background-content p {
+    color: #4be1ff;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 3s ease-in-out;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #1a92be;
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0d699b;
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* About Section */
+.main-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 50px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.same-content h1 {
+    color: #1a92be;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.same-content p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.same-content img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.same-content img:hover {
+    transform: scale(1.05);
+}
+
+/* Services Section */
+.main-services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 50px;
+}
+
+.inner-services-content {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.inner-services-content:hover {
+    transform: translateY(-10px);
+}
+
+.inner-services-content .service-icon {
+    font-size: 2rem;
+    color: #1a92be;
+}
+
+.inner-services-content h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #1a92be;
+}
+
+.inner-services-content p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Gallery Section */
+.main-gallery {
+    padding: 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.inner-gallery {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.inner-gallery:hover img {
+    transform: scale(1.05);
+}
+
+/* Why Choose Us Section */
+.main-chose {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 50px;
+    background-color: #fff;
+}
+
+.main-chose img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.main-chose img:hover {
+    transform: scale(1.1);
+}
+
+.inner-chose h1 {
+    color: #1a92be;
+    font-size: 2rem;
+}
+
+.inner-chose p {
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Scroll Progress */
+.scroll-progress {
+    background-color: #1a92be;
+    height: 5px;
+    width: 0; /* Initially set to 0 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: width 0.25s ease-in-out;
+}
+
+html {
+    scroll-behavior: smooth;
+}

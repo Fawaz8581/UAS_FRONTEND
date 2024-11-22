@@ -1,0 +1,249 @@
+/* General Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Header Section */
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/background.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed; /* Keep the navbar and logo fixed during scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1000; /* Ensure the navbar stays above other content */
+}
+
+.logo {
+    position: relative; /* Keep the logo inside the fixed navbar */
+    width: 100px; /* Adjust the size of the logo */
+    height: auto;
+    margin-left: 10px; /* Add spacing from the left */
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.background-image{
+    background: url(img/background-cancer.jpg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    padding-top: 10%;
+    position: relative;
+}
+
+/* Background Content */
+.background-content h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: black;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.background-content p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: black;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
+}
+
+.background-content .btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ff7675;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease-in-out;
+}
+
+.background-content .btn:hover {
+    background-color: #d63031;
+}
+
+/* About Section */
+/* About Section */
+.about {
+    padding: 50px;
+    background-color: #f8f9fa;
+}
+
+.about .heading {
+    text-align: center;
+    font-size: 2rem;
+    color: #2d3436;
+    margin-bottom: 30px;
+}
+
+.main-about {
+    display: flex;
+    justify-content: space-between; /* Mengatur jarak antara teks dan gambar */
+    align-items: center;
+    flex-wrap: wrap; /* Agar tetap responsif jika layar lebih kecil */
+    gap: 30px; /* Memberikan jarak antara teks dan gambar */
+}
+
+.about-content {
+    flex: 1; /* Membuat konten teks menyesuaikan ruang yang ada */
+    max-width: 50%; /* Batas maksimal untuk teks agar tidak terlalu lebar */
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    color: #636e72;
+}
+
+/* Same-content image wrapper */
+.same-content.image {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Gambar tetap di tengah */
+    max-width: 50%; /* Gambar tidak lebih dari setengah area */
+    overflow: hidden; /* Supaya gambar tidak keluar jalur */
+}
+
+/* Slider image styling */
+.slider-image {
+    width: 100%;
+    height: auto;
+    max-width: 500px; /* Gambar tidak melebihi ukuran maksimal */
+    object-fit: cover; /* Pastikan gambar tetap dalam frame tanpa distorsi */
+}
+
+/* Swiper container styling */
+.swiper-container {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.swiper-pagination {
+    bottom: 10px;
+}
+
+
+
+.slider-image {
+    width: 100%;
+    max-width: 500px; /* Atur ukuran maksimal gambar */
+    height: auto;
+    object-fit: cover;
+}
+
+
+.swiper-button-next, 
+.swiper-button-prev {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.swiper-pagination {
+    bottom: 10px;
+}
+
+
+.navigation button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.navigation button:hover {
+    background-color: #ff7675;
+}
+
+/* Services Section */
+.our-services {
+    padding: 50px;
+    background-color: #dfe6e9;
+}
+
+.our-services .heading {
+    text-align: center;
+    font-size: 2rem;
+    color: #2d3436;
+}
+
+.main-services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.inner-services-content {
+    background-color: white;
+    width: 30%;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inner-services-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.inner-services-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2d3436;
+}
+
+.inner-services-content p {
+    font-size: 1rem;
+    color: #636e72;
+}
+
