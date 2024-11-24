@@ -1,13 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// Route GET untuk menampilkan form registrasi
-Route::get('/register', function () {
-    return view('register');
+Route::view('/register', 'register');
+Route::post('/api/register', [AuthController::class, 'register']);
+
+// Route untuk tampilan login
+Route::get('/login', function () {
+    return view('login');
 });
 
-// Routes lainnya
+// Route untuk login dengan metode POST
+Route::post('/login', [AuthController::class, 'login']);  // Tambahkan route POST untuk login
+
+// Route lainnya
 Route::get('/', function () {
     return view('index');
 });

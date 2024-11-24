@@ -2,51 +2,31 @@
 
 namespace App\Models;
 
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use MongoDB\Client;
+use Illuminate\Support\Facades\Hash;
 
-class User extends Eloquent
+class User extends Model
 {
-    use Notifiable;
+    protected static $client;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Fungsi untuk koneksi ke MongoDB
+    public static function connect()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        if (!self::$client) {
+            self::$client = new Client(env('MONGODB_URI', 'mongodb://127.0.0.1:27017'));
+        }
+
+        return self::$client->selectCollection(env('MONGO_DB_DATABASE', 'UAS_FRONTEND'), 'users');
     }
 
-    /**
-     * Define the connection to use for MongoDB
-     *
-     * @var string
-     */
-    protected $connection = 'mongodb';
+    // Fungsi untuk membuat user baru
+    public static function createUser(array $data)
+    {
+        $data['password'] = Hash::make($data['password']);  // Enkripsi password sebelum disimpan
+        $collection = self::connect();
+        $result = $collection->insertOne($data);
+
+        return $result->getInsertedId();
+    }
 }
