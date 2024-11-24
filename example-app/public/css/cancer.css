@@ -8,7 +8,7 @@ body, html {
 
 /* Header Section */
 .header {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/background.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/background-cancer.jpg');
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -150,42 +150,6 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.swiper-button-next, 
-.swiper-button-prev {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-}
-
-.swiper-pagination {
-    bottom: 10px;
-}
-
-
-
-.slider-image {
-    width: 100%;
-    max-width: 500px; /* Atur ukuran maksimal gambar */
-    height: auto;
-    object-fit: cover;
-}
-
-
-.swiper-button-next, 
-.swiper-button-prev {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-}
-
-.swiper-pagination {
-    bottom: 10px;
 }
 
 
