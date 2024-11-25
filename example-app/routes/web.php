@@ -12,7 +12,7 @@ Route::get('/login', function () {
 });
 
 // Route untuk login dengan metode POST
-Route::post('/login', [AuthController::class, 'login']);  // Tambahkan route POST untuk login
+Route::post('/login', [AuthController::class, 'login']);
 
 // Route lainnya
 Route::get('/', function () {
