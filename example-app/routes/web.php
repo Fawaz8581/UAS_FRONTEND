@@ -14,6 +14,12 @@ Route::get('/login', function () {
 // Route untuk login dengan metode POST
 Route::post('/login', [AuthController::class, 'login']);
 
+// Setelah login berhasil, arahkan ke halaman index
+Route::get('/', function () {
+    return view('index');  // atau sesuai dengan tampilan utama kamu
+})->name('home');
+
+
 // Route lainnya
 Route::get('/', function () {
     return view('index');

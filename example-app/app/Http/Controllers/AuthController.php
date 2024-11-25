@@ -15,17 +15,17 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+    
         // Cari user berdasarkan email
         $user = User::findByEmail($data['email']);
-
+    
         if (!$user) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Your account is not registered',
             ], 404);
         }
-
+    
         // Verifikasi password
         if (!Hash::check($data['password'], $user['password'])) {
             return response()->json([
@@ -33,18 +33,11 @@ class AuthController extends Controller
                 'message' => 'Your password does not match',
             ], 401);
         }
-
+    
         // Jika login berhasil
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Login Successfully',
-            'user' => [
-                'id' => (string) $user['_id'],
-                'username' => $user['username'],
-                'email' => $user['email'],
-            ]
-        ]);
+        return redirect('/'); // Redirect ke halaman utama
     }
+    
 
     public function register(Request $request)
     {

@@ -11,14 +11,15 @@ angular.module('loginApp', [])
         // Kirim request POST ke API login dengan email dan password
         $http.post('/api/login', $scope.loginData)
             .then(function(response) {
-                // Jika login berhasil, arahkan ke halaman utama '/'
+                // Jika login berhasil, tampilkan pop-up sukses dan arahkan ke halaman utama
+                alert('Login Successful!');
                 $window.location.href = '/';  // Redirect ke halaman utama
             }, function(error) {
-                // Jika ada error, tampilkan pesan error
+                // Jika ada error, tampilkan pop-up error
                 if (error.status === 401) {  // Unauthorized, login gagal
-                    $scope.errorMessage = 'Wrong Password';
+                    alert('Wrong Password');
                 } else {
-                    $scope.errorMessage = 'An error occurred, please try again.';
+                    alert('An error occurred, please try again.');
                 }
             });
     };
