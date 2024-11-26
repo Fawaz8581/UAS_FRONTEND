@@ -13,7 +13,7 @@ class CreateUsersCollection extends Migration
             $collection->string('username');
             $collection->string('email')->unique();
             $collection->string('password'); // Password hashed
-            $collection->string('password_plain'); // Password asli
+            # $collection->string('password_plain'); // Password asli
             $collection->timestamps();
         });
     }
