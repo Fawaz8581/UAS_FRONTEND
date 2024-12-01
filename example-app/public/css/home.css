@@ -692,6 +692,37 @@ footer{
     font-size: 1.2rem; /* Ukuran font lebih besar (ubah sesuai kebutuhan) */
 }
 
+.profile-info {
+    position: relative; /* Agar dropdown bisa diposisikan relatif terhadap .profile-info */
+}
+
+.dropdown-menu {
+    display: none; /* Sembunyikan dropdown secara default */
+    position: absolute; /* Posisi absolut untuk dropdown */
+    top: 100%; /* Tempatkan dropdown tepat di bawah .profile-info */
+    left: 0; /* Sesuaikan posisi ke kiri */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info:hover .dropdown-menu {
+    display: block; /* Tampilkan dropdown saat hover pada .profile-info */
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
 
 html {
     scroll-behavior: smooth;

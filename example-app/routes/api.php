@@ -17,3 +17,5 @@ Route::post('/login', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/users', [AuthController::class, 'getCurrentUser']);
+
+Route::post('/register', [AuthController::class, 'register']);

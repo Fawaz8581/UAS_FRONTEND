@@ -35,21 +35,19 @@
                 <li><a href="#blog">BLOG</a></li>
             </ul>
         </div>
-        <div class="profile-info d-flex align-items-center">
+        <div class="profile-info d-flex align-items-center position-relative">
     <img 
         src="{{ session('user.profile_image') ?? 'default-profile.png' }}" 
         alt="Profile" 
         class="profile-image">
-    <span class="profile-name">{{ session('user.username') ?? 'Guest' }}</span>
-</div>
-        <div class="burger">&#9776;</div>
-    </nav>
-    <div class="main">
-        <div class="text-box">
-            <h1>We are committed to supporting your health</h1>
-            <a href="#services" class="btn btn1">Visit to know more</a>
-        </div>
+    <span class="profile-name" id="usernameDropdown" tabindex="0" style="cursor: pointer;">{{ session('user.username') ?? 'Guest' }}</span>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a class="dropdown-item" href="/user-settings">User Settings</a>
+        <a class="dropdown-item" href="/logout">Logout</a>
     </div>
+</div>
+<div class="burger">&#9776;</div>
+
 </section>
 
 
