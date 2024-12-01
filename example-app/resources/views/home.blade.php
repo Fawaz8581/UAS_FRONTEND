@@ -28,26 +28,30 @@
 
     <section class="background">
     <nav class="navbar">
-        <a href="#" class="logo"><img src="img/favicon.ico" alt=""></a>
+        <a href="#" class="logo"><img src="img/favicon.ico" alt="Logo"></a>
         <div class="navbar-items h-class">
             <ul class="nav v-class">
                 <li><a href="#">HOME</a></li>
                 <li><a href="#blog">BLOG</a></li>
             </ul>
         </div>
-        <div class="profile-info">
-            <img src="path/to/your/profile-image.jpg" alt="Profile" class="profile-image">
-            <span class="profile-name">Nama Anda</span>
-        </div>
+        <div class="profile-info d-flex align-items-center">
+    <img 
+        src="{{ session('user.profile_image') ?? 'default-profile.png' }}" 
+        alt="Profile" 
+        class="profile-image">
+    <span class="profile-name">{{ session('user.username') ?? 'Guest' }}</span>
+</div>
         <div class="burger">&#9776;</div>
     </nav>
     <div class="main">
         <div class="text-box">
             <h1>We are committed to supporting your health</h1>
-            <a href="#services" class="btn btn1">visit to know more</a>
+            <a href="#services" class="btn btn1">Visit to know more</a>
         </div>
     </div>
 </section>
+
 
 
     <!--Tampilan awal end-->

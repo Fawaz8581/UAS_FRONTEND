@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+
+Route::middleware(['auth.user'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index']);
+});
 
 Route::view('/register', 'register');
 Route::post('/api/register', [AuthController::class, 'register']);

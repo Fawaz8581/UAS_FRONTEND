@@ -680,16 +680,18 @@ footer{
 }
 
 .profile-image {
-    width: 40px; /* Ukuran gambar profil */
-    height: 40px; /* Ukuran gambar profil */
+    width: 40px; /* Ukuran gambar profil (sama seperti yang diinginkan) */
+    height: 40px; /* Ukuran gambar profil (sama seperti yang diinginkan) */
     border-radius: 50%; /* Membuat gambar profil menjadi bulat */
     margin-right: 10px; /* Jarak antara gambar dan nama */
 }
 
 .profile-name {
-    font-weight: bold;
-    color: #333; /* Warna teks nama profil */
+    font-weight: bold; /* Menebalkan teks nama profil */
+    color: #ffffff; /* Warna teks nama profil */
+    font-size: 1.2rem; /* Ukuran font lebih besar (ubah sesuai kebutuhan) */
 }
+
 
 html {
     scroll-behavior: smooth;
