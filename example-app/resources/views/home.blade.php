@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ponsonbys Care - Home</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icons">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/indexsuccess.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -219,7 +219,7 @@
         </div>
         <p class="para">copyright @ Nicolas Matthew Wijaya, William Immanuel Lee, Fawaz</p>
     </footer>
-    <script src="/js/index.js"></script>
+    <script src="/js/indexsuccess.js"></script>
 
 </body>
 </html>

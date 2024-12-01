@@ -15,14 +15,31 @@ Route::get('/login', function () {
 Route::post('/login', [AuthController::class, 'login']);
 
 // Setelah login berhasil, arahkan ke halaman index
-Route::get('/', function () {
-    return view('index');  // atau sesuai dengan tampilan utama kamu
+Route::get('/home', function () {
+    return view('home');  // atau sesuai dengan tampilan utama kamu
 })->name('home');
+
+Route::get('/api/users', function () {
+    return response()->json([
+        'username' => session('username', null),
+    ]);
+});
+
+Route::get('/logout', function () {
+    session()->forget('username');
+    return redirect('/');
+});
+
 
 
 // Route lainnya
 Route::get('/', function () {
     return view('index');
+});
+
+// Route lainnya
+Route::get('/home', function () {
+    return view('home');
 });
 
 Route::get('/cancer', function () {

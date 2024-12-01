@@ -13,7 +13,7 @@ angular.module('loginApp', [])
             .then(function(response) {
                 // Jika login berhasil, tampilkan pop-up sukses dan arahkan ke halaman utama
                 alert('Login Successful!');
-                $window.location.href = '/';  // Redirect ke halaman utama
+                $window.location.href = '/home';  // Redirect ke halaman utama
             }, function(error) {
                 // Jika ada error, tampilkan pop-up error
                 if (error.status === 401) {  // Unauthorized, login gagal

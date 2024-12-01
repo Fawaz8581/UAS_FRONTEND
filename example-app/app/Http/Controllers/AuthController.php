@@ -35,7 +35,7 @@ class AuthController extends Controller
         }
     
         // Jika login berhasil
-        return redirect('/'); // Redirect ke halaman utama
+        return redirect('/home'); // Redirect ke halaman utama
     }
     
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AuthController;
 
 Route::post('/login', function (Request $request) {
     $credentials = $request->only('email', 'password');
@@ -12,3 +13,7 @@ Route::post('/login', function (Request $request) {
 
     return response()->json(['message' => 'Invalid credentials'], 401);
 });
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/users', [AuthController::class, 'getCurrentUser']);

@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    background: linear-gradient(135deg, #1a92bedb, #2e6476); /* Gradient antara dua warna dasar */
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,7 +14,7 @@ body {
 }
 
 .login-container {
-    background: white;
+    background: #ffffff; /* Warna latar belakang putih untuk kontainer login */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,7 @@ h1 {
     font-size: 2rem;
     margin-bottom: 20px;
     font-weight: bold;
-    color: #007bff;
+    color: #2e6476; /* Warna judul sesuai tema */
 }
 
 label {
@@ -48,8 +48,8 @@ input {
 }
 
 input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    border-color: #1a92bedb; /* Warna fokus sesuai tema */
+    box-shadow: 0 0 5px rgba(26, 146, 190, 0.3); /* Warna bayangan fokus */
     outline: none;
 }
 
@@ -57,7 +57,7 @@ input:focus {
     margin-top: 20px;
     padding: 10px;
     width: 100%;
-    background: linear-gradient(90deg, #007bff, #0056b3);
+    background: #2e6476; /* Warna latar belakang tombol */
     color: white;
     font-size: 1rem;
     border: none;
@@ -67,7 +67,7 @@ input:focus {
 }
 
 .btn:hover {
-    background: linear-gradient(90deg, #0056b3, #003f7f);
+    background: #1a92bedb; /* Warna saat hover */
     transform: translateY(-3px);
 }
 
@@ -106,7 +106,7 @@ input:focus {
 .popup-content button {
     margin-top: 15px;
     padding: 8px 15px;
-    background: linear-gradient(90deg, #007bff, #0056b3);
+    background: #2e6476; /* Warna latar belakang tombol pop-up */
     color: white;
     border: none;
     cursor: pointer;
@@ -116,7 +116,7 @@ input:focus {
 }
 
 .popup-content button:hover {
-    background: linear-gradient(90deg, #0056b3, #003f7f);
+    background: #1a92bedb; /* Warna saat hover di tombol pop-up */
     transform: translateY(-2px);
 }
 
