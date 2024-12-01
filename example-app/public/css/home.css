@@ -674,7 +674,22 @@ footer{
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+.profile-info {
+    display: flex;
+    align-items: center;
+}
 
+.profile-image {
+    width: 40px; /* Ukuran gambar profil */
+    height: 40px; /* Ukuran gambar profil */
+    border-radius: 50%; /* Membuat gambar profil menjadi bulat */
+    margin-right: 10px; /* Jarak antara gambar dan nama */
+}
+
+.profile-name {
+    font-weight: bold;
+    color: #333; /* Warna teks nama profil */
+}
 
 html {
     scroll-behavior: smooth;

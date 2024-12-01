@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ponsonbys Care - Home</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icons">
-    <link rel="stylesheet" href="css/indexsuccess.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -27,25 +27,28 @@
     <!-- tampilan awal-->
 
     <section class="background">
-        <nav class="navbar">
-            <a href="#" class="logo"><img src="img/favicon.ico" alt=""></a>
-            <div class="navbar-items h-class">
-                <ul class="nav v-class">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#blog">BLOG</a></li>
-                    <li><a href="/login">LOGIN</a></li>
-                    <li><a href="/register">REGISTER</a></li>
-                </ul>
-            </div>
-            <div class="burger">&#9776</div>
-        </nav>
-        <div class="main">
-            <div class="text-box">
-                <h1>We are committed to supporting your health</h1>
-                <a href="#services" class="btn btn1">visit to know more</a>
-            </div>
+    <nav class="navbar">
+        <a href="#" class="logo"><img src="img/favicon.ico" alt=""></a>
+        <div class="navbar-items h-class">
+            <ul class="nav v-class">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#blog">BLOG</a></li>
+            </ul>
         </div>
-    </section>
+        <div class="profile-info">
+            <img src="path/to/your/profile-image.jpg" alt="Profile" class="profile-image">
+            <span class="profile-name">Nama Anda</span>
+        </div>
+        <div class="burger">&#9776;</div>
+    </nav>
+    <div class="main">
+        <div class="text-box">
+            <h1>We are committed to supporting your health</h1>
+            <a href="#services" class="btn btn1">visit to know more</a>
+        </div>
+    </div>
+</section>
+
 
     <!--Tampilan awal end-->
 
@@ -219,7 +222,7 @@
         </div>
         <p class="para">copyright @ Nicolas Matthew Wijaya, William Immanuel Lee, Fawaz</p>
     </footer>
-    <script src="/js/indexsuccess.js"></script>
+    <script src="/js/home.js"></script>
 
 </body>
 </html>

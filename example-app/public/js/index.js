@@ -65,3 +65,4 @@ angular.module('consultationApp', [])
 .controller('ConsultationController', function($scope) {
     // Kontrol dan logika lainnya bisa ditambahkan di sini jika diperlukan
 });
+
