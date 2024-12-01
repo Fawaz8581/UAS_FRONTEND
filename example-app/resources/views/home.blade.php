@@ -42,7 +42,8 @@
                 class="profile-image">
             <span class="profile-name" id="usernameDropdown" tabindex="0" style="cursor: pointer;">{{ session('user.username') ?? 'Guest' }}</span>
             <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="usernameDropdown">
-                <a class="dropdown-item" href="/user-settings">User Settings</a>
+                <a class="dropdown-item" href="/settings">User Settings</a>
+                <a class="dropdown-item" href="/consultaion">consultaion List</a>
                 <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </div>

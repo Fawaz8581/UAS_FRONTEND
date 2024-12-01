@@ -36,6 +36,10 @@ Route::get('/logout', function () {
 });
 
 
+Route::get('/settings', function () {
+    return view('settings');
+});
+
 
 // Route lainnya
 Route::get('/', function () {
