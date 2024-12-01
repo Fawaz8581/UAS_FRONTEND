@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/register.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="/js/register.js"></script>
-    <title>Register</title>
+    <title>Ponsonbys Care - Register</title>
 </head>
 <body ng-controller="RegistrationController">
     <div class="register-container">

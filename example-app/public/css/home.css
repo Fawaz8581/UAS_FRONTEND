@@ -735,6 +735,13 @@ footer{
     }
 }
 
+.alert {
+    margin: 20px 0; /* Spasi di sekitar notifikasi */
+    padding: 15px; /* Padding dalam notifikasi */
+    border-radius: 5px; /* Sudut melengkung */
+    background-color: #ffc107; /* Warna latar belakang kuning */
+    color: #856404; /* Warna teks */
+}
 
 
 html {
