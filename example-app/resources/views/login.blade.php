@@ -23,7 +23,10 @@
             <button type="submit" class="btn">Login</button>
         </form>
 
-        <!-- Menampilkan pesan error jika ada -->
+
+        <div class="register-link-container">
+            <p>Don't have an account? <span class="register-link" ng-click="redirectToLogin()">Register here</span></p>
+        </div>
 
         
 

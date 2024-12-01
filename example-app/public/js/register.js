@@ -1,22 +1,24 @@
-var app = angular.module('registrationApp', []);
+angular.module('registrationApp', [])
+.controller('RegistrationController', function($scope, $http, $window) {
+    $scope.user = {
+        username: '',
+        email: '',
+        password: ''
+    };
 
-app.controller('RegistrationController', function ($scope, $http, $window) {
-    $scope.user = {};
-
-    // Fungsi untuk mendaftarkan user
-    $scope.register = function () {
-        // Mengirim data registrasi ke backend
+    $scope.register = function() {
+        // Send registration data to the API
         $http.post('/api/register', $scope.user)
-            .then(function (response) {
-                // Tampilkan pesan berhasil
-                alert('Registration Successful');
-
-                // Redirect ke halaman login setelah berhasil
-                $window.location.href = '/login';  // Gantilah dengan path halaman login Anda
-            })
-            .catch(function (error) {
-                // Tampilkan pesan error jika ada masalah saat registrasi
-                alert('Error: ' + error.data.message);
+            .then(function(response) {
+                alert('Registration Successful!');
+                $window.location.href = '/login';  // Redirect to the login page after successful registration
+            }, function(error) {
+                alert('Registration failed, please try again.');
             });
+    };
+
+    // Function to redirect to the login page
+    $scope.redirectToLogin = function() {
+        $window.location.href = '/login'; // Redirect to the login page
     };
 });

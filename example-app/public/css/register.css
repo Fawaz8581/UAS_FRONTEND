@@ -75,6 +75,16 @@ button:active {
     transform: translateY(1px);
 }
 
+.register-link {
+    color: #2e6476; /* Use the theme color */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    text-decoration: none; /* Remove underline */
+}
+.register-link:hover {
+    text-decoration: underline; /* Optional: underline on hover for feedback */
+}
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;

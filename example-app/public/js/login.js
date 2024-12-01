@@ -23,4 +23,10 @@ angular.module('loginApp', [])
                 }
             });
     };
+
+    
+    // Function to redirect to the login page
+    $scope.redirectToLogin = function() {
+        $window.location.href = '/register'; // Redirect to the login page
+    };
 });

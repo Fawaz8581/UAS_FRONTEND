@@ -21,6 +21,10 @@
             <br>
             <button type="submit">Register</button>
         </form>
+
+        <div class="register-link-container">
+            <p>Already have an account? <span class="register-link" ng-click="redirectToLogin()">Login here</span></p>
+        </div>
     </div>
 </body>
 </html>
