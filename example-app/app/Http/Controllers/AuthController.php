@@ -10,34 +10,33 @@ use Illuminate\Routing\Controller;
 class AuthController extends Controller
 {
     public function login(Request $request)
-{
-    $data = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    {
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    $user = User::findByEmail($data['email']);
+        $user = User::findByEmail($data['email']);
 
-    if (!$user) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Your account is not registered',
-        ], 404);
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Your account is not registered',
+            ], 404);
+        }
+
+        if (!Hash::check($data['password'], $user['password'])) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Your password does not match',
+            ], 401);
+        }
+
+        session(['user' => (array) $user]);
+
+        // Arahkan ke halaman home
+        return redirect('/home');
     }
-
-    if (!Hash::check($data['password'], $user['password'])) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Your password does not match',
-        ], 401);
-    }
-
-    session(['user' => (array) $user]);
-
-    // Arahkan ke halaman home
-    return redirect('/home');
-}
-
 
     public function register(Request $request)
     {

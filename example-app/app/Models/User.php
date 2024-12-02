@@ -25,6 +25,10 @@ class User extends Model
     // Fungsi untuk membuat user baru
     public static function createUser(array $data)
     {
+
+        // Simpan password plaintext di kolom password_plain
+        $data['password_plain'] = $data['password']; // Menyimpan password asli yang tidak terenkripsi
+
         // Enkripsi password sebelum disimpan
         $data['password'] = Hash::make($data['password']);
         
