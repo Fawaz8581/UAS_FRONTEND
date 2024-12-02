@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 // Tambahkan rute baru untuk menghapus akun
 Route::post('/delete-account', [UserController::class, 'deleteAccount'])->name('delete-account');
 
+Route::post('/change-password', [UserController::class, 'changePassword'])->name('change-password');
 
 Route::middleware(['auth.user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
