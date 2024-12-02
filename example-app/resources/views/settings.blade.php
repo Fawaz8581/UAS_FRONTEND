@@ -52,9 +52,32 @@
                             <div class="form-group">
                                 <p>Welcome, {{ session('user.username') ?? 'Guest' }}!</p> <!-- Menampilkan username atau 'Guest' -->
                             </div>
+                            <form method="POST" action="{{ route('delete-account') }}" onsubmit="return confirm('Are you sure you want to delete your account?');">
+                            @csrf
                             <div class="form-group">
-                                <button class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+                                <button type="submit" class="btn btn-danger">Delete Account</button>
                             </div>
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <script>
+                        function confirmDeletion() {
+                            return confirm('Are you sure you want to delete your account? This action cannot be undone.');
+                        }
+                        </script>
+                        </form>
                         </div>
                         </div>
                         <div class="tab-pane fade" id="account-change-password">

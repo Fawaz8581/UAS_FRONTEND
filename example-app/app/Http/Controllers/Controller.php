@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller; // Tambahkan ini
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request; // Untuk memastikan class Request juga ada
+
+
+class Controller extends BaseController
+{
+    // Jika ada fungsi global, tambahkan di sini
+}
 
 class HomeController extends Controller
 {
@@ -16,3 +22,5 @@ class HomeController extends Controller
         return view('home', ['user' => $user]);
     }
 }
+
+
