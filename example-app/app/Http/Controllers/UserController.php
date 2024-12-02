@@ -176,4 +176,120 @@ class UserController extends Controller
         return back()->withErrors(['update_error' => 'Failed to update email.']);
     }
 }
+
+public function changeProfileImage(Request $request)
+{
+    // Check if user exists in session
+    $user = $request->session()->get('user');
+    if (!$user) {
+        return redirect('/')->withErrors(['auth_error' => 'You must be logged in to change your profile image.']);
+    }
+
+    $request->validate([
+        'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:800'
+    ]);
+
+    try {
+        // Get user from MongoDB
+        $collection = User::connect();
+        $currentUser = $collection->findOne(['email' => $user['email']]);
+
+        if (!$currentUser) {
+            return back()->withErrors(['user_error' => 'User not found in database.']);
+        }
+
+        // Handle file upload
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            
+            // Move the uploaded file to public storage
+            $image->move(public_path('profile_images'), $imageName);
+            
+            // Create the public URL for the image
+            $imageUrl = url('profile_images/' . $imageName);
+
+            // Remove old profile image if exists
+            if (isset($currentUser['profile_image'])) {
+                $oldImagePath = public_path(str_replace(url('/'), '', parse_url($currentUser['profile_image'], PHP_URL_PATH)));
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+
+            // Update profile_image in MongoDB
+            $updateResult = $collection->updateOne(
+                ['_id' => $currentUser['_id']],
+                [
+                    '$set' => [
+                        'profile_image' => $imageUrl
+                    ]
+                ]
+            );
+
+            if ($updateResult->getModifiedCount() > 0) {
+                // Update session with new profile image
+                $user['profile_image'] = $imageUrl;
+                $request->session()->put('user', $user);
+                
+                return back()->with('success', 'Profile image updated successfully');
+            }
+        }
+
+        return back()->withErrors(['update_error' => 'Failed to update profile image.']);
+
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => 'An error occurred while updating profile image.']);
+    }
+}
+
+public function removeProfileImage(Request $request)
+{
+    // Check if user exists in session
+    $user = $request->session()->get('user');
+    if (!$user) {
+        return redirect('/')->withErrors(['auth_error' => 'You must be logged in to remove your profile image.']);
+    }
+
+    try {
+        // Get user from MongoDB
+        $collection = User::connect();
+        $currentUser = $collection->findOne(['email' => $user['email']]);
+
+        if (!$currentUser) {
+            return back()->withErrors(['user_error' => 'User not found in database.']);
+        }
+
+        // Remove old profile image if exists
+        if (isset($currentUser['profile_image'])) {
+            $oldImagePath = public_path(str_replace(url('/'), '', parse_url($currentUser['profile_image'], PHP_URL_PATH)));
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
+        }
+
+        // Update MongoDB to remove profile_image
+        $updateResult = $collection->updateOne(
+            ['_id' => $currentUser['_id']],
+            [
+                '$unset' => [
+                    'profile_image' => ""
+                ]
+            ]
+        );
+
+        if ($updateResult->getModifiedCount() > 0) {
+            // Remove profile_image from session
+            unset($user['profile_image']);
+            $request->session()->put('user', $user);
+            
+            return back()->with('success', 'Profile image removed successfully');
+        }
+
+        return back()->withErrors(['update_error' => 'Failed to remove profile image.']);
+
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => 'An error occurred while removing profile image.']);
+    }
+}
 }

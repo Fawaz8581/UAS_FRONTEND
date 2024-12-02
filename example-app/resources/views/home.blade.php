@@ -35,12 +35,13 @@
                 <li><a href="#blog">BLOG</a></li>
             </ul>
         </div>
-        <div class="profile-info d-flex align-items-center position-relative">
-            <img 
-                src="{{ session('user.profile_image') ?? 'default-profile.png' }}" 
-                alt="Profile" 
-                class="profile-image">
-            <span class="profile-name" id="usernameDropdown" tabindex="0" style="cursor: pointer;">{{ session('user.username') ?? 'Guest' }}</span>
+        <div class="profile-info">
+            <div class="profile-image-wrapper">
+                <img src="{{ session('user.profile_image') ?? 'https://bootdey.com/img/Content/avatar/avatar1.png' }}" 
+                     alt="Profile" 
+                     class="profile-image">
+            </div>
+            <span class="profile-name">{{ session('user.username') }}</span>
             <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="usernameDropdown">
                 <a class="dropdown-item" href="/settings">User Settings</a>
                 <a class="dropdown-item" href="/consultaion">consultaion List</a>

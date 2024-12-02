@@ -34,14 +34,24 @@
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="account-general">
                             <div class="card-body media align-items-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
-                                    class="d-block ui-w-80">
+                                <img src="{{ session('user.profile_image') ?? 'https://bootdey.com/img/Content/avatar/avatar1.png' }}" 
+                                     alt="Profile" 
+                                     class="d-block ui-w-80">
                                 <div class="media-body ml-4">
-                                    <label class="btn btn-outline-primary">
-                                        Upload new photo
-                                        <input type="file" class="account-settings-fileinput">
-                                    </label> &nbsp;
-                                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                                    <form method="POST" action="{{ route('change-profile-image') }}" enctype="multipart/form-data">
+                                        @csrf
+                                        <label class="btn btn-outline-primary">
+                                            Upload new photo
+                                            <input type="file" name="profile_image" class="account-settings-fileinput" style="display: none;" 
+                                                   accept="image/*" onchange="this.form.submit()">
+                                        </label>
+                                    </form>
+                                    @if(session('user.profile_image'))
+                                        <form method="POST" action="{{ route('remove-profile-image') }}" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-default md-btn-flat">Reset</button>
+                                        </form>
+                                    @endif
                                     <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
                                 </div>
                             </div>
@@ -81,36 +91,27 @@
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
-                            <div class="form-group">
-                                <p>Welcome, {{ session('user.username') ?? 'Guest' }}!</p> <!-- Menampilkan username atau 'Guest' -->
+                                <form method="POST" action="{{ route('delete-account') }}" onsubmit="return confirm('Are you sure you want to delete your account?');">
+                                    @csrf
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-danger">Delete Account</button>
+                                    </div>
+                                </form>
+                                @if (session('success'))
+                                    <div class="alert alert-success mt-3">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="alert alert-danger mt-3">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
-                            <form method="POST" action="{{ route('delete-account') }}" onsubmit="return confirm('Are you sure you want to delete your account?');">
-                            @csrf
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Delete Account</button>
-                            </div>
-                            @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <script>
-                        function confirmDeletion() {
-                            return confirm('Are you sure you want to delete your account? This action cannot be undone.');
-                        }
-                        </script>
-                        </form>
-                        </div>
                         </div>
                         <div class="tab-pane fade" id="account-change-password">
                             <div class="card-body pb-2">

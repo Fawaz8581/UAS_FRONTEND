@@ -14,6 +14,10 @@ Route::post('/change-email', [UserController::class, 'changeEmail'])->name('chan
 
 Route::post('/change-username', [UserController::class, 'changeUsername'])->name('change-username');
 
+Route::post('/change-profile-image', [UserController::class, 'changeProfileImage'])->name('change-profile-image');
+
+Route::post('/remove-profile-image', [UserController::class, 'removeProfileImage'])->name('remove-profile-image');
+
 Route::middleware(['auth.user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
 });
