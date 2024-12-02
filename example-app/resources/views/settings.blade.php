@@ -34,7 +34,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="account-general">
                             <div class="card-body media align-items-center">
-                                <img src="{{ session('user.profile_image') ?? 'https://bootdey.com/img/Content/avatar/avatar1.png' }}" 
+                                <img src="{{ session('user.profile_image') ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}" 
                                      alt="Profile" 
                                      class="d-block ui-w-80">
                                 <div class="media-body ml-4">

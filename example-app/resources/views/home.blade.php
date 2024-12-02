@@ -37,14 +37,14 @@
         </div>
         <div class="profile-info">
             <div class="profile-image-wrapper">
-                <img src="{{ session('user.profile_image') ?? 'https://bootdey.com/img/Content/avatar/avatar1.png' }}" 
+                <img src="{{ session('user.profile_image') ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}" 
                      alt="Profile" 
                      class="profile-image">
             </div>
             <span class="profile-name">{{ session('user.username') }}</span>
             <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="usernameDropdown">
                 <a class="dropdown-item" href="/settings">User Settings</a>
-                <a class="dropdown-item" href="/consultaion">consultaion List</a>
+                <a class="dropdown-item" href="/consultaionlist">consultaion List</a>
                 <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </div>
