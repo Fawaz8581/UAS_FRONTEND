@@ -10,6 +10,10 @@ Route::post('/delete-account', [UserController::class, 'deleteAccount'])->name('
 
 Route::post('/change-password', [UserController::class, 'changePassword'])->name('change-password');
 
+Route::post('/change-email', [UserController::class, 'changeEmail'])->name('change-email');
+
+Route::post('/change-username', [UserController::class, 'changeUsername'])->name('change-username');
+
 Route::middleware(['auth.user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
 });

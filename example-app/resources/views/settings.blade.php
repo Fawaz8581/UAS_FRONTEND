@@ -47,6 +47,40 @@
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
+                                <form method="POST" action="{{ route('change-username') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label class="form-label">Current Username</label>
+                                        <input type="text" class="form-control mb-1" value="{{ session('user.username') }}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">New Username</label>
+                                        <input type="text" name="new_username" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Change Username</button>
+                                </form>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('change-email') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label class="form-label">Current Email</label>
+                                        <input type="email" class="form-control mb-1" value="{{ session('user.email') }}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">New Email</label>
+                                        <input type="email" name="new_email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Password (to confirm)</label>
+                                        <input type="password" name="password" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Change Email</button>
+                                </form>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
                             <div class="form-group">
                                 <p>Welcome, {{ session('user.username') ?? 'Guest' }}!</p> <!-- Menampilkan username atau 'Guest' -->
                             </div>

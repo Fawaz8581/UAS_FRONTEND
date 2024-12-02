@@ -76,4 +76,104 @@ class UserController extends Controller
             return back()->withErrors(['update_error' => 'Failed to update password.']);
         }
     }
+
+    public function changeUsername(Request $request)
+    {
+        // Check if user exists in session
+        $user = $request->session()->get('user');
+        if (!$user) {
+            return redirect('/')->withErrors(['auth_error' => 'You must be logged in to change your username.']);
+        }
+
+        $request->validate([
+            'new_username' => 'required|min:3|max:50',
+        ]);
+
+        // Get user from MongoDB
+        $collection = User::connect();
+        $currentUser = $collection->findOne(['email' => $user['email']]);
+
+        if (!$currentUser) {
+            return back()->withErrors(['user_error' => 'User not found in database.']);
+        }
+
+        // Check if new username already exists
+        $usernameExists = $collection->findOne(['username' => $request->new_username]);
+        if ($usernameExists) {
+            return back()->withErrors(['new_username' => 'This username is already taken']);
+        }
+
+        // Update username in MongoDB using ObjectId
+        $updateResult = $collection->updateOne(
+            ['_id' => $currentUser['_id']], // Menggunakan ID dokumen
+            [
+                '$set' => [
+                    'username' => $request->new_username
+                ]
+            ]
+        );
+
+        if ($updateResult->getModifiedCount() > 0) {
+            // Update session with new username
+            $user['username'] = $request->new_username;
+            $request->session()->put('user', $user);
+            
+            return back()->with('success', 'Username changed successfully');
+        } else {
+            return back()->withErrors(['update_error' => 'Failed to update username.']);
+        }
+    }
+
+    public function changeEmail(Request $request)
+{
+    // Check if user exists in session
+    $user = $request->session()->get('user');
+    if (!$user) {
+        return redirect('/')->withErrors(['auth_error' => 'You must be logged in to change your email.']);
+    }
+
+    $request->validate([
+        'new_email' => 'required|email|max:255',
+        'password' => 'required',
+    ]);
+
+    // Get user from MongoDB
+    $collection = User::connect();
+    $currentUser = $collection->findOne(['email' => $user['email']]);
+
+    if (!$currentUser) {
+        return back()->withErrors(['user_error' => 'User not found in database.']);
+    }
+
+    // Verify password
+    if (!Hash::check($request->password, $currentUser['password'])) {
+        return back()->withErrors(['password' => 'Password is incorrect']);
+    }
+
+    // Check if new email already exists
+    $emailExists = $collection->findOne(['email' => $request->new_email]);
+    if ($emailExists) {
+        return back()->withErrors(['new_email' => 'This email is already in use']);
+    }
+
+    // Update email in MongoDB using ObjectId
+    $updateResult = $collection->updateOne(
+        ['_id' => $currentUser['_id']], // Menggunakan ID dokumen
+        [
+            '$set' => [
+                'email' => $request->new_email
+            ]
+        ]
+    );
+
+    if ($updateResult->getModifiedCount() > 0) {
+        // Update session with new email
+        $user['email'] = $request->new_email;
+        $request->session()->put('user', $user);
+        
+        return back()->with('success', 'Email changed successfully');
+    } else {
+        return back()->withErrors(['update_error' => 'Failed to update email.']);
+    }
+}
 }
