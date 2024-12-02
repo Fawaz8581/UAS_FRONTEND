@@ -54,6 +54,11 @@ Route::get('/settings', function () {
     return view('settings');
 });
 
+Route::get('/consultation', function () {
+    return view('consultation');
+});
+
+
 
 // Route lainnya
 Route::get('/', function () {

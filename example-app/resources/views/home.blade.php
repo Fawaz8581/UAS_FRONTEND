@@ -112,7 +112,7 @@
 
     <!-- Tombol Konsultasi -->
     <div class="floating-button">
-        <a href="consultation.html" class="btn btn-primary btn-lg">Tentukan jadwal konsultasi kesehatan anda</a>
+        <a href="consultation" class="btn btn-primary btn-lg">Tentukan jadwal konsultasi kesehatan anda</a>
     </div>
 
     <!-- ____________quality  -->

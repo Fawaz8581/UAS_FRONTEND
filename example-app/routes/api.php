@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsultationController;
 
 Route::post('/login', function (Request $request) {
     $credentials = $request->only('email', 'password');
@@ -19,3 +20,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/users', [AuthController::class, 'getCurrentUser']);
 
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/consultations', [ConsultationController::class, 'store']);
