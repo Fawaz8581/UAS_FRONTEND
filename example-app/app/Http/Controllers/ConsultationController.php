@@ -2,32 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consultation;
 use Illuminate\Http\Request;
-use MongoDB\Client as Mongo;
+use Illuminate\Routing\Controller as BaseController;
 
-class ConsultationController extends Controller
+class ConsultationController extends BaseController
 {
-    protected $collection;
-
-    public function __construct()
-    {
-        $client = new Mongo(env('MONGO_URI'));
-        $this->collection = $client->mydatabase->consultations;
-    }
-
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
             'age' => 'required|integer',
-            'address' => 'required|string',
-            'symptoms' => 'required|string',
+            'address' => 'required|string|max:255',
             'schedule' => 'required|date',
             'doctor' => 'required|string',
+            'symptoms' => 'required|string',
+            'description' => 'nullable|string',
         ]);
 
-        $this->collection->insertOne($data);
+        Consultation::createConsultation($validatedData);
 
-        return response()->json(['message' => 'Consultation scheduled successfully'], 201);
+        return redirect()->back()->with('success', 'Consultation appointment saved successfully!');
     }
 }

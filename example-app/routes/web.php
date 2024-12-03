@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ConsultationController;
+
+   Route::post('/consultations', [ConsultationController::class, 'store'])->name('consultations.store');
 
 // Tambahkan rute baru untuk menghapus akun
 Route::post('/delete-account', [UserController::class, 'deleteAccount'])->name('delete-account');

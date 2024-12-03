@@ -15,11 +15,13 @@
         <div id="right">
             <h1>Consultation Appointment</h1>
 
-            <form id="form">
+            <form id="form" method="POST" action="{{ route('consultations.store') }}">
+                @csrf
                 <div>
                     <span>Full Name:</span>
                     <input
                         type="text"
+                        name="name"
                         autocomplete="off"
                         placeholder="John Doe"
                         id="name"
@@ -30,6 +32,7 @@
                     <span>Age:</span>
                     <input
                         type="number"
+                        name="age"
                         autocomplete="off"
                         placeholder="25"
                         id="age"
@@ -40,6 +43,7 @@
                     <span>Address:</span>
                     <input
                         type="text"
+                        name="address"
                         autocomplete="off"
                         placeholder="123 Main Street"
                         id="address"
@@ -50,17 +54,18 @@
                     <span>Schedule:</span>
                     <input
                         type="datetime-local"
+                        name="schedule"
                         id="schedule"
                     >
                 </div>
 
-                <div>
-                    <span>Doctor:</span>
-                    <select id="doctor">
-                        <option value="">Select a doctor</option>
-                        <option value="Dr. Smith">Dr. Smith</option>
-                        <option value="Dr. Johnson">Dr. Johnson</option>
-                        <option value="Dr. Williams">Dr. Williams</option>
+                <div class="mb-3">
+                    <label class="form-label">Dokter</label>
+                    <select class="form-control" name="doctor" required>
+                        <option value="">Pilih Dokter</option>
+                        <option value="Dr. Ahmad">Dr. Ahmad - Umum</option>
+                        <option value="Dr. Sarah">Dr. Sarah - Spesialis Anak</option>
+                        <option value="Dr. Budi">Dr. Budi - Spesialis Jantung</option>
                     </select>
                 </div>
 
@@ -68,6 +73,7 @@
                     <span>Symptoms:</span>
                     <input
                         type="text"
+                        name="symptoms"
                         autocomplete="off"
                         placeholder="Fever, headache, etc."
                         id="symptoms"
@@ -77,13 +83,14 @@
                 <div>
                     <span>Description:</span>
                     <textarea
+                        name="description"
                         id="description"
                         placeholder="Additional details about your condition..."
                         rows="4"
                     ></textarea>
                 </div>
 
-                <button class="send-button">Send</button>
+                <button type="submit" class="send-button">Send</button>
             </form>
         </div>
     </div>

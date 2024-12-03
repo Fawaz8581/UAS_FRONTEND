@@ -23,7 +23,6 @@ class CreateConsultationsTable extends Migration
             $table->string('symptoms');
             $table->text('description')->nullable();
             $table->timestamps();
-            $table->string('status')->default('pending');
         });
     }
 
