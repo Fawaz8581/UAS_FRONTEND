@@ -18,10 +18,12 @@ class CreateConsultationsTable extends Migration
             $table->string('name');
             $table->integer('age');
             $table->string('address');
-            $table->text('symptoms');
             $table->dateTime('schedule');
             $table->string('doctor');
+            $table->string('symptoms');
+            $table->text('description')->nullable();
             $table->timestamps();
+            $table->string('status')->default('pending');
         });
     }
 

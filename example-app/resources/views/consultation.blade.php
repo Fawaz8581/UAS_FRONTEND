@@ -22,69 +22,65 @@
                         type="text"
                         autocomplete="off"
                         placeholder="John Doe"
-                        id="fullname"
+                        id="name"
                     >
                 </div>
 
                 <div>
-                    <span>E-mail:</span>
+                    <span>Age:</span>
                     <input
-                        type="mail"
+                        type="number"
                         autocomplete="off"
-                        placeholder="jdoe@mail.com"
-                        id="email"
+                        placeholder="25"
+                        id="age"
                     >
                 </div>
 
                 <div>
-                    <span>Check In</span>
+                    <span>Address:</span>
                     <input
-                        type="date"
-                        id="check-in"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="123 Main Street"
+                        id="address"
                     >
                 </div>
 
                 <div>
-                    <span>Room Size:</span>
-                    <div id="room-selector">
-                        <label
-                            for="1"
-                            title="2 person"
-                            class="grow-selector"
-                        >
-                            Couple
-                        </label>
-                        <input
-                            type="radio"
-                            name="room"
-                            id="1"
-                            checked
-                        >
+                    <span>Schedule:</span>
+                    <input
+                        type="datetime-local"
+                        id="schedule"
+                    >
+                </div>
 
-                        <label
-                            for="2"
-                            title="3 to 5 persons"
-                        >
-                            Family
-                        </label>
-                        <input
-                            type="radio"
-                            name="room"
-                            id="2"
-                        >
+                <div>
+                    <span>Doctor:</span>
+                    <select id="doctor">
+                        <option value="">Select a doctor</option>
+                        <option value="Dr. Smith">Dr. Smith</option>
+                        <option value="Dr. Johnson">Dr. Johnson</option>
+                        <option value="Dr. Williams">Dr. Williams</option>
+                    </select>
+                </div>
 
-                        <label
-                            for="3"
-                            title="5+ persons"
-                        >
-                            Friends
-                        </label>
-                        <input
-                            type="radio"
-                            name="room"
-                            id="3"
-                        >
-                    </div>
+                <div>
+                    <span>Symptoms:</span>
+                    <input
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Fever, headache, etc."
+                        id="symptoms"
+                    >
+                </div>
+
+                <div>
+                    <span>Description:</span>
+                    <textarea
+                        id="description"
+                        placeholder="Additional details about your condition..."
+                        rows="4"
+                    ></textarea>
                 </div>
 
                 <button class="send-button">Send</button>

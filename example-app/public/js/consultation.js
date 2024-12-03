@@ -1,67 +1,76 @@
-window.addEventListener("load", () => {
-    const labels = document.querySelectorAll(
-        "#room-selector label"
-    );
-    const form = document.querySelector("#form");
+var app = angular.module('consultationApp', []);
 
-    for (var element of labels) {
-        element.addEventListener("click", handleSelectorClick);
-    }
-
-    form.addEventListener("submit", handleFormSubmit);
-});
-
-const handleSelectorClick = (e) => {
-    for (var siblings of e.target.parentElement.children) {
-        siblings.classList.remove("grow-selector");
-    }
-
-    e.target.classList.add("grow-selector");
-}
-
-const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    const fields = [];
-
-    fields.push(document.querySelector("#fullname"));
-    fields.push(document.querySelector("#email"));
-    fields.push(document.querySelector("#check-in"));
-
-    // if at least one of the fields == "empty" - error
-    let error = fields.some(f => f.value.trim() === "");
-
-    if (error) {
-        Toastify({
-            text: "Error: please fill in all fields!",
-            duration: 3000,
-            style: {
-                background: "#1a92bedb",
-                color: "#ffffff"
-            }
-        }).showToast();
-    } else {
-        Toastify({
-            text: "Awesome! Keep an eye on your email for further info.",
-            duration: 3000,
-            style: {
-                background: "#7FA98E"
-            }
-        }).showToast();
-        clearForm();
-    }
-}
-
-const clearForm = () => {
-    // Clears form fields
-    document.querySelector("#form").reset();
-
-    // Resets custom room selector field
-    document.querySelectorAll("#room-selector label")
-        .forEach((f) => {
-            f.classList.remove("grow-selector");
-        });
+app.controller('ConsultationController', function($scope, $http) {
+    // Initialize consultation object
+    $scope.consultation = {};
     
-    document.querySelector("#room-selector > label:nth-child(1)")
-        .classList.add("grow-selector");
-}
+    // List of available doctors
+    $scope.doctors = [
+        'Dr. Smith',
+        'Dr. Johnson',
+        'Dr. Williams',
+        'Dr. Brown'
+    ];
+
+    // Form submission handler
+    $scope.submitForm = function() {
+        if ($scope.consultForm.$valid) {
+            // Prepare the data
+            var consultationData = {
+                name: $scope.consultation.name,
+                age: parseInt($scope.consultation.age),
+                address: $scope.consultation.address,
+                schedule: $scope.consultation.schedule,
+                doctor: $scope.consultation.doctor,
+                symptoms: $scope.consultation.symptoms,
+                description: $scope.consultation.description || ''
+            };
+
+            // Send POST request to API
+            $http.post('/api/consultations', consultationData)
+                .then(function(response) {
+                    // Show success message
+                    Toastify({
+                        text: "Consultation scheduled successfully!",
+                        duration: 3000,
+                        style: {
+                            background: "#7FA98E"
+                        }
+                    }).showToast();
+                    
+                    // Reset form
+                    $scope.consultation = {};
+                    $scope.consultForm.$setPristine();
+                    $scope.consultForm.$setUntouched();
+                })
+                .catch(function(error) {
+                    // Show error message
+                    Toastify({
+                        text: "Error: " + (error.data.message || "Something went wrong!"),
+                        duration: 3000,
+                        style: {
+                            background: "#ff4444"
+                        }
+                    }).showToast();
+                });
+        }
+    };
+
+    // Helper function to format date for datetime-local input
+    $scope.formatDate = function(date) {
+        if (!date) return '';
+        var d = new Date(date);
+        var month = '' + (d.getMonth() + 1);
+        var day = '' + d.getDate();
+        var year = d.getFullYear();
+        var hour = '' + d.getHours();
+        var minute = '' + d.getMinutes();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        if (hour.length < 2) hour = '0' + hour;
+        if (minute.length < 2) minute = '0' + minute;
+
+        return [year, month, day].join('-') + 'T' + [hour, minute].join(':');
+    };
+});
