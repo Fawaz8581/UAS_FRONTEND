@@ -1,3 +1,0 @@
-Composer install
-
-php artisan key:generate
