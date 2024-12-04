@@ -105,6 +105,8 @@
                 </div>
 
                 <button type="submit" class="send-button">Send</button>
+                <button type="button" class="cancel-button" onclick="redirectToHome()">Cancel</button>
+
             </form>
         </div>
     </div>

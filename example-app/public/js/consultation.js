@@ -1,5 +1,9 @@
 var app = angular.module('consultationApp', []);
 
+function redirectToHome() {
+    window.location.href = '/home';
+}
+
 app.controller('ConsultationController', function($scope, $http) {
     // Initialize consultation object
     $scope.consultation = {};
