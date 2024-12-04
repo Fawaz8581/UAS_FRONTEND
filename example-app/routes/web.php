@@ -108,3 +108,7 @@ Route::get('/healthy', function () {
 Route::get('/angular', function () {
     return view('angular');
 });
+
+Route::get('/consultations', function () {
+    return view('consultation-list');
+});
