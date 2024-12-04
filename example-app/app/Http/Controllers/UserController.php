@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Consultation;
 
 class UserController extends Controller
 {
@@ -105,7 +106,7 @@ class UserController extends Controller
 
         // Update username in MongoDB using ObjectId
         $updateResult = $collection->updateOne(
-            ['_id' => $currentUser['_id']], // Menggunakan ID dokumen
+            ['_id' => $currentUser['_id']], 
             [
                 '$set' => [
                     'username' => $request->new_username
@@ -117,7 +118,18 @@ class UserController extends Controller
             // Update session with new username
             $user['username'] = $request->new_username;
             $request->session()->put('user', $user);
-            
+
+            // Update username in all related consultations using MongoDB syntax
+            $consultationCollection = Consultation::connect();
+            $consultationCollection->updateMany(
+                ['user_id' => $currentUser['_id']],
+                [
+                    '$set' => [
+                        'username' => $request->new_username
+                    ]
+                ]
+            );
+
             return back()->with('success', 'Username changed successfully');
         } else {
             return back()->withErrors(['update_error' => 'Failed to update username.']);
