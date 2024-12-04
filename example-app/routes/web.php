@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\ConsultationListController;
 
    Route::post('/consultations', [ConsultationController::class, 'store'])->name('consultations.store');
 
@@ -109,6 +110,5 @@ Route::get('/angular', function () {
     return view('angular');
 });
 
-Route::get('/consultations', function () {
-    return view('consultation-list');
-});
+Route::get('/consultation-list', [ConsultationListController::class, 'index'])->name('consultation.list');
+Route::get('/api/consultations', [ConsultationListController::class, 'getConsultations']);

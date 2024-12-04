@@ -1,33 +1,55 @@
 .table-responsive {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .table thead th {
     background-color: #f8f9fa;
     border-bottom: 2px solid #dee2e6;
+    padding: 12px;
 }
 
 .table tbody tr:hover {
     background-color: #f8f9fa;
 }
 
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
 .btn-sm {
     padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
 }
 
-.modal-content {
-    border-radius: 8px;
-}
-
-.form-control:focus, .form-select:focus {
+.form-control:focus, 
+.form-select:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
 .search-filter-section {
     background-color: #f8f9fa;
-    padding: 1rem;
+    padding: 20px;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .row > div {
+        margin-bottom: 10px;
+    }
 }

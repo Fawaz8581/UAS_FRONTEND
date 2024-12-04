@@ -36,4 +36,6 @@ class ConsultationController extends BaseController
             return back()->with('error', 'Failed to schedule consultation. Please try again.');
         }
     }
+
+    
 }

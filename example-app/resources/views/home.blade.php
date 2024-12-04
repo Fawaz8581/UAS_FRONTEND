@@ -44,7 +44,7 @@
             <span class="profile-name">{{ session('user.username') }}</span>
             <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="usernameDropdown">
                 <a class="dropdown-item" href="/settings">User Settings</a>
-                <a class="dropdown-item" href="/consultations">consultaion List</a>
+                <a class="dropdown-item" href="/consultation-list">consultaion List</a>
                 <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </div>

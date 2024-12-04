@@ -21,4 +21,15 @@ Route::get('/users', [AuthController::class, 'getCurrentUser']);
 
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/consultations', function () {
+    try {
+        $consultations = \App\Models\Consultation::getAllConsultations();
+        \Log::info('Consultations data:', ['data' => $consultations]); // Untuk debugging
+        return response()->json($consultations);
+    } catch (\Exception $e) {
+        \Log::error('Error fetching consultations: ' . $e->getMessage());
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+});
+
 Route::post('/consultations', [ConsultationController::class, 'store']);

@@ -28,4 +28,11 @@ class Consultation
 
         return $result->getInsertedId();
     }
+
+    public static function getAllConsultations()
+    {
+        $collection = self::connect();
+        $cursor = $collection->find();
+        return iterator_to_array($cursor);
+    }
 } 
