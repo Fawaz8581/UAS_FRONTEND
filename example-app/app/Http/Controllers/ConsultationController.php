@@ -11,6 +11,11 @@ class ConsultationController extends BaseController
     public function store(Request $request)
     {
         try {
+            $user = session('user');
+            if (!$user) {
+                return back()->with('error', 'You must be logged in to schedule a consultation.');
+            }
+
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
                 'age' => 'required|integer',
@@ -20,6 +25,9 @@ class ConsultationController extends BaseController
                 'symptoms' => 'required|string',
                 'description' => 'nullable|string',
             ]);
+
+            $validatedData['user_id'] = $user['_id'];
+            $validatedData['username'] = $user['username']; 
 
             Consultation::createConsultation($validatedData);
 
