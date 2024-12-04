@@ -74,3 +74,27 @@ app.controller('ConsultationController', function($scope, $http) {
         return [year, month, day].join('-') + 'T' + [hour, minute].join(':');
     };
 });
+
+// Add this at the bottom of your file
+document.addEventListener('DOMContentLoaded', function() {
+    // Close button functionality for alerts
+    document.querySelectorAll('.btn-close').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var alert = this.closest('.alert');
+            alert.style.opacity = '0';
+            setTimeout(function() {
+                alert.style.display = 'none';
+            }, 150);
+        });
+    });
+
+    // Auto-hide alerts after 3 seconds
+    setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(alert) {
+            alert.style.opacity = '0';
+            setTimeout(function() {
+                alert.style.display = 'none';
+            }, 150);
+        });
+    }, 3000);
+});

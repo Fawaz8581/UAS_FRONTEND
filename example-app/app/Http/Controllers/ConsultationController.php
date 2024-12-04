@@ -10,18 +10,22 @@ class ConsultationController extends BaseController
 {
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'age' => 'required|integer',
-            'address' => 'required|string|max:255',
-            'schedule' => 'required|date',
-            'doctor' => 'required|string',
-            'symptoms' => 'required|string',
-            'description' => 'nullable|string',
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'age' => 'required|integer',
+                'address' => 'required|string|max:255',
+                'schedule' => 'required|date',
+                'doctor' => 'required|string',
+                'symptoms' => 'required|string',
+                'description' => 'nullable|string',
+            ]);
 
-        Consultation::createConsultation($validatedData);
+            Consultation::createConsultation($validatedData);
 
-        return redirect()->back()->with('success', 'Consultation appointment saved successfully!');
+            return redirect('/home')->with('success', 'Consultation scheduled successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to schedule consultation. Please try again.');
+        }
     }
 }

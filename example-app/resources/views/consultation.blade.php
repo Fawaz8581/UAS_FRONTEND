@@ -15,6 +15,20 @@
         <div id="right">
             <h1>Consultation Appointment</h1>
 
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <form id="form" method="POST" action="{{ route('consultations.store') }}">
                 @csrf
                 <div>
@@ -23,7 +37,7 @@
                         type="text"
                         name="name"
                         autocomplete="off"
-                        placeholder="John Doe"
+                        placeholder="Your name"
                         id="name"
                     >
                 </div>
@@ -45,7 +59,7 @@
                         type="text"
                         name="address"
                         autocomplete="off"
-                        placeholder="123 Main Street"
+                        placeholder="Your Address"
                         id="address"
                     >
                 </div>
@@ -60,7 +74,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Dokter</label>
+                    <label class="form-label">Doctor</label>
                     <select class="form-control" name="doctor" required>
                         <option value="">Pilih Dokter</option>
                         <option value="Dr. Ahmad">Dr. Ahmad - Umum</option>
