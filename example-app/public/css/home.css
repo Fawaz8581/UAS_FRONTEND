@@ -680,41 +680,51 @@ footer{
 }
 
 .profile-image {
-    width: 40px; /* Ukuran gambar profil (sama seperti yang diinginkan) */
-    height: 40px; /* Ukuran gambar profil (sama seperti yang diinginkan) */
-    border-radius: 50%; /* Membuat gambar profil menjadi bulat */
-    margin-right: 10px; /* Jarak antara gambar dan nama */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
 }
 
 .profile-name {
-    font-weight: bold; /* Menebalkan teks nama profil */
-    color: #ffffff; /* Warna teks nama profil */
-    font-size: 1.2rem; /* Ukuran font lebih besar (ubah sesuai kebutuhan) */
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.2rem;
 }
 
 .profile-info {
-    position: relative; /* Agar dropdown bisa diposisikan relatif terhadap .profile-info */
+    position: relative;
 }
 
 .dropdown-menu {
-    display: none; /* Sembunyikan dropdown secara default */
-    position: absolute; /* Posisi absolut untuk dropdown */
-    top: 100%; /* Tempatkan dropdown tepat di bawah .profile-info */
-    left: 0; /* Sesuaikan posisi ke kiri */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 0.375rem; /* Kelas Bootstrap untuk border-radius */
+    border-radius: 0.375rem;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Mulai dengan opacity 0 untuk animasi */
-    transition: opacity 0.2s ease, transform 0.2s ease; /* Animasi transisi */
-    transform: translateY(-10px); /* Awal posisi sedikit di atas */
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(-10px);
 }
 
 .profile-info:hover .dropdown-menu {
-    display: block; /* Tampilkan dropdown saat hover pada .profile-info */
-    opacity: 1; /* Munculkan dropdown */
-    transform: translateY(0); /* Pindahkan kembali ke posisi normal */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .dropdown-item {
@@ -725,22 +735,22 @@ footer{
 }
 
 .dropdown-item:hover {
-    background-color: #f0f0f0; /* Warna latar belakang saat hover */
+    background-color: #f0f0f0;
 }
 
 /* Responsif */
 @media (max-width: 768px) {
     .dropdown-menu {
-        width: 100%; /* Lebar dropdown penuh pada tampilan mobile */
+        width: 100%;
     }
 }
 
 .alert {
-    margin: 20px 0; /* Spasi di sekitar notifikasi */
-    padding: 15px; /* Padding dalam notifikasi */
-    border-radius: 5px; /* Sudut melengkung */
-    background-color: #ffc107; /* Warna latar belakang kuning */
-    color: #856404; /* Warna teks */
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #ffc107;
+    color: #856404;
 }
 
 
