@@ -35,4 +35,28 @@ class Consultation
         $cursor = $collection->find();
         return iterator_to_array($cursor);
     }
+
+    public static function updateConsultation($id, array $data)
+    {
+        try {
+            $collection = self::connect();
+            $objectId = new \MongoDB\BSON\ObjectId($id);
+            
+            return $collection->updateOne(
+                ['_id' => $objectId],
+                ['$set' => $data]
+            );
+        } catch (\Exception $e) {
+            \Log::error('MongoDB update error: ' . $e->getMessage());
+            throw $e;
+        }
+    }
+
+    public static function deleteConsultation($id)
+    {
+        $collection = self::connect();
+        return $collection->deleteOne(
+            ['_id' => new \MongoDB\BSON\ObjectId($id)]
+        );
+    }
 } 

@@ -112,3 +112,5 @@ Route::get('/angular', function () {
 
 Route::get('/consultation-list', [ConsultationListController::class, 'index'])->name('consultation.list');
 Route::get('/api/consultations', [ConsultationListController::class, 'getConsultations']);
+Route::put('/api/consultations/{id}', [ConsultationListController::class, 'update'])->name('consultations.update');
+Route::delete('/api/consultations/{id}', [ConsultationListController::class, 'delete'])->name('consultations.delete');
